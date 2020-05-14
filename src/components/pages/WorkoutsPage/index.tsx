@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from 'apollo-boost';
+import WorkoutsPageView from './WorkoutsPageView';
 
 const WORKOUTS = gql`
   {
@@ -17,20 +18,13 @@ const WORKOUTS = gql`
   }
 `;
 
-type Workout = {
-  id: string,
-  title: string,
-}
-
-const HomePage = () => {
+const WorkoutsPage = () => {
   const { loading, error, data } = useQuery(WORKOUTS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-  
-  return data.workouts.map((workout: Workout) => {
-    return <p>{workout.title}</p>
-  })
+
+  return (<WorkoutsPageView workouts={data.workouts} />)
 }
 
-export default HomePage;
+export default WorkoutsPage;
