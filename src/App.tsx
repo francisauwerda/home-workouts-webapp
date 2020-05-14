@@ -5,6 +5,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 
 import WorkoutsPage from './components/pages/WorkoutsPage';
 import WorkoutDetailsPage from './components/pages/WorkoutDetailsPage';
+import { Routes } from './components/enums';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql'
@@ -15,10 +16,10 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Switch>
-          <Route path="/workout-details">
+          <Route path={`${Routes.WorkoutDetailsPage}/:workoutId`}>
             <WorkoutDetailsPage />
           </Route>
-          <Route path="/">
+          <Route path={Routes.WorkoutsPage}>
             <WorkoutsPage />
           </Route>
         </Switch>
