@@ -17,7 +17,7 @@ const WorkoutsPage = () => {
     for (let i = 0; i < WORKOUT_MULTIPLIER; i++) {
       workouts.push({
         ...workout,
-        id: `${workout.id}${i}`
+        id: WORKOUT_MULTIPLIER === 1 ? `${workout.id}` : `${workout.id}${i}`
       });
     }
   }

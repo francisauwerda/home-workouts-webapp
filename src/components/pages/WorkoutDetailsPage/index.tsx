@@ -9,13 +9,11 @@ interface Params {
   workoutId: string
 }
 
-
 const WorkoutDetailsPage = () => {
   const match: { params: Params } = useRouteMatch();
   const { loading, error, data } = useQuery(GET_WORKOUTS);
 
   const { params: { workoutId } } = match;
-
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
