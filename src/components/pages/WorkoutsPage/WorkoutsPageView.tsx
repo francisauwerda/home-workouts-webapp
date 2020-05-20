@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Routes } from '../../enums';
-import { Header, PageContainer, WorkoutsContainer, TitleContainer } from './styled';
+import * as SC from './styled';
 
 export interface Exercise {
   id: string,
@@ -16,6 +15,21 @@ export interface Workout {
   exercises: Exercise[]
 }
 
+const WorkoutCard = ({ workout }: { workout: Workout }) => {
+  return (
+    <SC.WorkoutCardWrapper to={`${Routes.WorkoutDetailsPage}/${workout.id}`}>
+      <SC.WorkoutCardInner>
+        <SC.WorkoutTitle>
+          {workout.title}
+        </SC.WorkoutTitle>
+        <SC.WorkoutSubtitle>
+          {`${workout.exercises.length} exercises`}
+        </SC.WorkoutSubtitle>
+      </SC.WorkoutCardInner>
+    </SC.WorkoutCardWrapper>
+  )
+}
+
 interface WorkoutsPageViewProps {
   workouts: Workout[]
 }
@@ -23,20 +37,25 @@ interface WorkoutsPageViewProps {
 const WorkoutsPageView = ({ workouts }: WorkoutsPageViewProps) => {
 
   return (
-    <PageContainer>
-      <TitleContainer>
-        <Header>Choose your workout</Header>
-      </TitleContainer>
-      <WorkoutsContainer>
-        {workouts.map((workout) => {
-          return (
-            <Link key={workout.id} to={`${Routes.WorkoutDetailsPage}/${workout.id}`}>
-              <p>{workout.title}</p>
-            </Link>
-          )
-        })}
-      </WorkoutsContainer>
-    </PageContainer>
+    <SC.PageContainer>
+      <SC.TitleContainer>
+        <SC.Header>Choose your workout</SC.Header>
+      </SC.TitleContainer>
+      <SC.WorkoutsSectionContainer>
+        <SC.WorkoutsGroupWrapper>
+          <SC.WorkoutsGroupTitle>
+            Full body
+          </SC.WorkoutsGroupTitle>
+          <SC.WorkoutsContainer>
+            {workouts.map((workout) => {
+              return (
+                <WorkoutCard key={workout.id} workout={workout} />
+              )
+            })}
+          </SC.WorkoutsContainer>
+        </SC.WorkoutsGroupWrapper>
+      </SC.WorkoutsSectionContainer>
+    </SC.PageContainer>
   )
 };
 
