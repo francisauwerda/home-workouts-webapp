@@ -4,7 +4,7 @@ import WorkoutsPageView from './WorkoutsPageView';
 import { GET_WORKOUTS } from '../../../graphql/queries';
 
 // TODO: Set to 1 for production
-const WORKOUT_MULTIPLIER = 1;
+const WORKOUT_MULTIPLIER = 10;
 
 const WorkoutsPage = () => {
   const { loading, error, data } = useQuery(GET_WORKOUTS);
@@ -17,7 +17,8 @@ const WorkoutsPage = () => {
     for (let i = 0; i < WORKOUT_MULTIPLIER; i++) {
       workouts.push({
         ...workout,
-        id: WORKOUT_MULTIPLIER === 1 ? `${workout.id}` : `${workout.id}${i}`
+        // @ts-ignore
+        id: WORKOUT_MULTIPLIER === 1 ? `${workout.id}` : `${workout.id}${i === 0 ? '' : i}`
       });
     }
   }

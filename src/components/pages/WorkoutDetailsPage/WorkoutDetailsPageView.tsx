@@ -1,12 +1,27 @@
 import React from 'react';
-import { Workout } from '../WorkoutsPage/WorkoutsPageView';
+import { Workout, Exercise } from '../WorkoutsPage/WorkoutsPageView';
+import * as SC from './styled';
+import config, { Environment } from '../../../config';
 
 interface Props {
   workout: Workout
 }
 
-const DEV_MODE = true;
+const DEV_MODE = config.environment === Environment.Development;
 const DEV_IMAGE_URL = '/dips.jpg';
+
+const ExerciseComponent = ({ exercise }: { exercise: Exercise }) => {
+  const imageUrl = DEV_MODE ? DEV_IMAGE_URL : exercise.imageUrl;
+
+  return (
+    <SC.ExerciseWrapper>
+      <SC.ExerciseTitle>{exercise.title}</SC.ExerciseTitle>
+      <SC.ExerciseImage>
+        <img src={imageUrl} alt={exercise.title} />
+      </SC.ExerciseImage>
+    </SC.ExerciseWrapper>
+  )
+}
 
 const WorkoutDetailsPageView = ({ workout }: Props) => {
   const { title, exercises } = workout;
@@ -15,12 +30,7 @@ const WorkoutDetailsPageView = ({ workout }: Props) => {
     <div>
       <h3>{`Exercises for ${title}`}</h3>
       {exercises.map(exercise => {
-        const imageUrl = DEV_MODE ? DEV_IMAGE_URL : exercise.imageUrl;
-
-        return <div key={exercise.id}>
-          <p>{exercise.title}</p>
-          <img src={imageUrl} alt={exercise.title} />
-        </div>
+        return <ExerciseComponent exercise={exercise} />
       })}
     </div>
   )
