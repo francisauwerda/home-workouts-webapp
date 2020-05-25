@@ -38,6 +38,21 @@ const ExerciseComponent = ({ exercise }: { exercise: Exercise }) => {
   )
 }
 
+interface PreWorkoutDetailsProps {
+  exercises: Exercise[],
+  initialCountdownRemaining: number,
+  initialExerciseTimeRemaining: number
+}
+
+const PreWorkoutDetails = ({ initialExerciseTimeRemaining, initialCountdownRemaining }: PreWorkoutDetailsProps) => {
+  return (
+    <div>
+      <div>{`${initialExerciseTimeRemaining} seconds per exercise`}</div>
+      <div>{`${initialCountdownRemaining} seconds per rest`}</div>
+    </div>
+  )
+}
+
 const WorkoutDetailsPageView = ({ workout }: Props) => {
   const initialCountdownRemaining = 3;
   const initialExerciseTimeRemaining = 3;
@@ -48,6 +63,10 @@ const WorkoutDetailsPageView = ({ workout }: Props) => {
   const [isRunning, setIsRunning] = useState(false);
   const [countdownRemaining, setCountdownRemaining] = useState(initialCountdownRemaining);
   const [exerciseTimeRemaining, setExerciseTimeRemaining] = useState(initialExerciseTimeRemaining);
+
+  const workoutStarted = isRunning
+    || countdownRemaining !== initialCountdownRemaining
+    || exerciseTimeRemaining !== initialExerciseTimeRemaining
 
   useInterval(() => {
     if (countdownRemaining > 0) {
@@ -64,17 +83,40 @@ const WorkoutDetailsPageView = ({ workout }: Props) => {
   }, isRunning ? 1000 : null)
 
   const toggleStartWorkout = () => {
-    setIsRunning(!isRunning);
+    !isRunning ? setIsRunning(true) : stopWorkout();
+  }
+
+  const pauseWorkout = () => {
+    setIsRunning(false);
+  }
+
+  const stopWorkout = () => {
+    setIsRunning(false);
+    setCurrentExercise(0);
+    setCountdownRemaining(initialCountdownRemaining);
+    setExerciseTimeRemaining(initialExerciseTimeRemaining);
   }
 
   return (
     <div>
       <SC.H3>{`Exercises for ${title}`}</SC.H3>
-      <ExerciseComponent exercise={exercises[currentExercise]} />
+      {workoutStarted
+        ? (
+          <ExerciseComponent exercise={exercises[currentExercise]} />
+        ) : (
+          <PreWorkoutDetails
+            initialCountdownRemaining={initialCountdownRemaining}
+            initialExerciseTimeRemaining={initialExerciseTimeRemaining}
+            exercises={exercises}
+          />
+        )}
+
       <div>Is running: {`${isRunning}`}</div>
       <div>Countdown remaining: {countdownRemaining}</div>
       <div>Exercise time remaining: {exerciseTimeRemaining}</div>
+      <div>Workout started: {`${workoutStarted}`}</div>
       <button onClick={toggleStartWorkout}>{isRunning ? 'Stop' : 'Start'}</button>
+      <button onClick={pauseWorkout}>Pause</button>
     </div>
   )
 }
