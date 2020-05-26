@@ -6,6 +6,7 @@ import config, { Environment } from '../../../config';
 import { useInterval } from '../../hooks';
 import { Link } from 'react-router-dom';
 import PreWorkoutDetails from './PreWorkoutDetails';
+import { Header } from '../../common';
 
 interface Props {
   workout: Workout
@@ -84,8 +85,8 @@ const WorkoutDetailsPageView = ({ workout }: Props) => {
 
   return (
     <SC.WorkoutDetailsPageViewWrapper>
-      <Link to="/">Back</Link>
-      <SC.H3>{`${title}`}</SC.H3>
+      <Header title={title} leftPart={<Link to="/">Back</Link>} />
+
       {workoutStarted
         ? (
           <ExerciseComponent exercise={exercises[currentExercise]} />
