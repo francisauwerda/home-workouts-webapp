@@ -5,6 +5,7 @@ import * as SC from './styled';
 import config, { Environment } from '../../../config';
 import { useInterval } from '../../hooks';
 import { Link } from 'react-router-dom';
+import PreWorkoutDetails from './PreWorkoutDetails';
 
 interface Props {
   workout: Workout
@@ -39,20 +40,7 @@ const ExerciseComponent = ({ exercise }: { exercise: Exercise }) => {
   )
 }
 
-interface PreWorkoutDetailsProps {
-  exercises: Exercise[],
-  initialCountdownRemaining: number,
-  initialExerciseTimeRemaining: number
-}
 
-const PreWorkoutDetails = ({ initialExerciseTimeRemaining, initialCountdownRemaining }: PreWorkoutDetailsProps) => {
-  return (
-    <div>
-      <div>{`${initialExerciseTimeRemaining} seconds per exercise`}</div>
-      <div>{`${initialCountdownRemaining} seconds per rest`}</div>
-    </div>
-  )
-}
 
 const WorkoutDetailsPageView = ({ workout }: Props) => {
   const initialCountdownRemaining = 3;
@@ -95,9 +83,9 @@ const WorkoutDetailsPageView = ({ workout }: Props) => {
   }
 
   return (
-    <div>
+    <SC.WorkoutDetailsPageViewWrapper>
       <Link to="/">Back</Link>
-      <SC.H3>{`Exercises for ${title}`}</SC.H3>
+      <SC.H3>{`${title}`}</SC.H3>
       {workoutStarted
         ? (
           <ExerciseComponent exercise={exercises[currentExercise]} />
@@ -113,9 +101,11 @@ const WorkoutDetailsPageView = ({ workout }: Props) => {
       <div>Countdown remaining: {countdownRemaining}</div>
       <div>Exercise time remaining: {exerciseTimeRemaining}</div>
       <div>Workout started: {`${workoutStarted}`}</div>
-      <button onClick={toggleStartWorkout}>{isRunning ? 'Pause' : 'Start'}</button>
-      <button onClick={stopWorkout}>Stop</button>
-    </div>
+      <SC.ButtonsWrapper>
+        <button onClick={toggleStartWorkout}>{isRunning ? 'Pause' : 'Start'}</button>
+        <button onClick={stopWorkout}>Stop</button>
+      </SC.ButtonsWrapper>
+    </SC.WorkoutDetailsPageViewWrapper>
   )
 }
 
