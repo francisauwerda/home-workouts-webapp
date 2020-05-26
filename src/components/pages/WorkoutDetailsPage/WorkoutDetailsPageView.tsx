@@ -4,6 +4,7 @@ import { Workout, Exercise } from '../WorkoutsPage/WorkoutsPageView';
 import * as SC from './styled';
 import config, { Environment } from '../../../config';
 import { useInterval } from '../../hooks';
+import { Link } from 'react-router-dom';
 
 interface Props {
   workout: Workout
@@ -95,6 +96,7 @@ const WorkoutDetailsPageView = ({ workout }: Props) => {
 
   return (
     <div>
+      <Link to="/">Back</Link>
       <SC.H3>{`Exercises for ${title}`}</SC.H3>
       {workoutStarted
         ? (
