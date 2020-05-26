@@ -83,11 +83,7 @@ const WorkoutDetailsPageView = ({ workout }: Props) => {
   }, isRunning ? 1000 : null)
 
   const toggleStartWorkout = () => {
-    !isRunning ? setIsRunning(true) : stopWorkout();
-  }
-
-  const pauseWorkout = () => {
-    setIsRunning(false);
+    setIsRunning(!isRunning);
   }
 
   const stopWorkout = () => {
@@ -115,8 +111,8 @@ const WorkoutDetailsPageView = ({ workout }: Props) => {
       <div>Countdown remaining: {countdownRemaining}</div>
       <div>Exercise time remaining: {exerciseTimeRemaining}</div>
       <div>Workout started: {`${workoutStarted}`}</div>
-      <button onClick={toggleStartWorkout}>{isRunning ? 'Stop' : 'Start'}</button>
-      <button onClick={pauseWorkout}>Pause</button>
+      <button onClick={toggleStartWorkout}>{isRunning ? 'Pause' : 'Start'}</button>
+      <button onClick={stopWorkout}>Stop</button>
     </div>
   )
 }
