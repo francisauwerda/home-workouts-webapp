@@ -15,15 +15,42 @@ interface Props {
 const DEV_MODE = config.environment === Environment.Development;
 const DEV_IMAGE_URL = '/dips.jpg';
 
-const Timer = () => {
+const Timer = ({
+  countdownRemaining,
+  timeRemaining
+}: {
+  countdownRemaining: number,
+  timeRemaining: number
+}) => {
+  let text: string;
+  let time: number;
+  if (countdownRemaining > 0) {
+    text = 'Countdown';
+    time = countdownRemaining;
+  } else if (timeRemaining > 0) {
+    text = 'Go go go!!!';
+    time = timeRemaining;
+  } else {
+    text = 'Finished 🏅';
+    time = 0;
+  }
   return (
     <SC.TimerWrapper>
-      <SC.H3>35 seconds</SC.H3>
+      <p>{text}</p>
+      <SC.H3>{time} seconds</SC.H3>
     </SC.TimerWrapper>
   )
 }
 
-const ExerciseComponent = ({ exercise }: { exercise: Exercise }) => {
+const ExerciseComponent = ({
+  exercise,
+  countdownRemaining,
+  timeRemaining
+}: {
+  exercise: Exercise,
+  countdownRemaining: number,
+  timeRemaining: number
+}) => {
   const imageUrl = DEV_MODE ? DEV_IMAGE_URL : exercise.imageUrl;
 
   return (
@@ -36,7 +63,10 @@ const ExerciseComponent = ({ exercise }: { exercise: Exercise }) => {
       <SC.ExerciseImageContainer>
         <SC.ExerciseImage src={imageUrl} alt={exercise.title} />
       </SC.ExerciseImageContainer>
-      <Timer />
+      <Timer
+        timeRemaining={timeRemaining}
+        countdownRemaining={countdownRemaining}
+      />
     </SC.ExerciseWrapper>
   )
 }
@@ -46,11 +76,12 @@ const ExerciseComponent = ({ exercise }: { exercise: Exercise }) => {
 const WorkoutDetailsPageView = ({ workout }: Props) => {
   const { title, exercises } = workout;
 
+  const initialTimesForBoth = 3;
   const [currentExercise, setCurrentExercise] = useState(0);
   const isNextExercise = currentExercise < exercises.length - 1;
   const [isRunning, setIsRunning] = useState(false);
-  const [initialCountdownRemaining, setInitialCountdownRemaining] = useState(5);
-  const [initialExerciseTimeRemaining, setInitialExerciseTimeRemaining] = useState(5);
+  const [initialCountdownRemaining, setInitialCountdownRemaining] = useState(initialTimesForBoth);
+  const [initialExerciseTimeRemaining, setInitialExerciseTimeRemaining] = useState(initialTimesForBoth);
   const [countdownRemaining, setCountdownRemaining] = useState(initialCountdownRemaining);
   const [exerciseTimeRemaining, setExerciseTimeRemaining] = useState(initialExerciseTimeRemaining);
 
@@ -72,7 +103,13 @@ const WorkoutDetailsPageView = ({ workout }: Props) => {
     if (countdownRemaining > 0) {
       setCountdownRemaining(countdownRemaining - 1);
     } else if (exerciseTimeRemaining > 0) {
-      setExerciseTimeRemaining(exerciseTimeRemaining - 1);
+      if (exerciseTimeRemaining === 1 && isNextExercise) {
+        setCurrentExercise(currentExercise + 1);
+        setCountdownRemaining(initialCountdownRemaining);
+        setExerciseTimeRemaining(initialExerciseTimeRemaining);
+      } else {
+        setExerciseTimeRemaining(exerciseTimeRemaining - 1);
+      }
     } else if (isNextExercise) {
       setCurrentExercise(currentExercise + 1);
       setCountdownRemaining(initialCountdownRemaining);
@@ -99,7 +136,11 @@ const WorkoutDetailsPageView = ({ workout }: Props) => {
 
       {workoutStarted
         ? (
-          <ExerciseComponent exercise={exercises[currentExercise]} />
+          <ExerciseComponent
+            exercise={exercises[currentExercise]}
+            countdownRemaining={countdownRemaining}
+            timeRemaining={exerciseTimeRemaining}
+          />
         ) : (
           <PreWorkoutDetails
             initialCountdownRemaining={initialCountdownRemaining}

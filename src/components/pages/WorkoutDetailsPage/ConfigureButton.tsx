@@ -23,8 +23,17 @@ const ConfigureButton = ({
   configureFunction,
   initialValue
 }: ConfigureButtonProps) => {
-  const sum = plusOrMinus === 'plus' ? initialValue + 1 : initialValue - 1;
-  const text = plusOrMinus === 'plus' ? '+' : '-';
+  let sum: number;
+  let text: string;
+
+  if (plusOrMinus === 'plus') {
+    sum = initialValue + 1;
+    text = '+';
+  } else {
+    sum = initialValue === 0 ? 0 : initialValue - 1;
+    text = '-'
+  }
+
   return (
     <Button
       onClick={
