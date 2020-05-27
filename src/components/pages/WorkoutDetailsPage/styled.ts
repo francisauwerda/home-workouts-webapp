@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const WorkoutDetailsPageViewWrapper = styled.div`
   display: flex;
   flex-direction: column;
+
+  max-height: 100%;
 `;
 
 export const H3 = styled.h3`
@@ -69,4 +71,8 @@ export const ExercisesList = styled.div`
 export const PreWorkoutDetailsWrapper = styled.div`
   display: flex;
   margin-bottom: 60px;
+`;
+
+export const ButtonWrapper = styled.button`
+  
 `;

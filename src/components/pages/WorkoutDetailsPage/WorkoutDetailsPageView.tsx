@@ -44,15 +44,25 @@ const ExerciseComponent = ({ exercise }: { exercise: Exercise }) => {
 
 
 const WorkoutDetailsPageView = ({ workout }: Props) => {
-  const initialCountdownRemaining = 3;
-  const initialExerciseTimeRemaining = 3;
   const { title, exercises } = workout;
 
   const [currentExercise, setCurrentExercise] = useState(0);
   const isNextExercise = currentExercise < exercises.length - 1;
   const [isRunning, setIsRunning] = useState(false);
+  const [initialCountdownRemaining, setInitialCountdownRemaining] = useState(5);
+  const [initialExerciseTimeRemaining, setInitialExerciseTimeRemaining] = useState(5);
   const [countdownRemaining, setCountdownRemaining] = useState(initialCountdownRemaining);
   const [exerciseTimeRemaining, setExerciseTimeRemaining] = useState(initialExerciseTimeRemaining);
+
+  const configureCountdown = (countdown: number) => {
+    setInitialCountdownRemaining(countdown);
+    setCountdownRemaining(countdown);
+  }
+
+  const configureExerciseTime = (exerciseTime: number) => {
+    setInitialExerciseTimeRemaining(exerciseTime);
+    setExerciseTimeRemaining(exerciseTime);
+  }
 
   const workoutStarted = isRunning
     || countdownRemaining !== initialCountdownRemaining
@@ -93,7 +103,9 @@ const WorkoutDetailsPageView = ({ workout }: Props) => {
         ) : (
           <PreWorkoutDetails
             initialCountdownRemaining={initialCountdownRemaining}
+            configureCountdown={configureCountdown}
             initialExerciseTimeRemaining={initialExerciseTimeRemaining}
+            configureExerciseTime={configureExerciseTime}
             exercises={exercises}
           />
         )}
