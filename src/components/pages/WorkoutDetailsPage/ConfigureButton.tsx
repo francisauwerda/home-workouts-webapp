@@ -1,48 +1,44 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
-import * as SC from './styled';
+import * as SC from "./styled";
 
-const Button = ({ children, onClick }: { children: ReactNode, onClick: any }) => {
+const Button = ({
+  children,
+  onClick,
+}: {
+  children: ReactNode;
+  onClick: any;
+}) => {
   return (
-    <SC.ButtonWrapper
-      type="button"
-      onClick={onClick}
-    >
+    <SC.ButtonWrapper type="button" onClick={onClick}>
       {children}
-    </SC.ButtonWrapper>);
-}
+    </SC.ButtonWrapper>
+  );
+};
 
 interface ConfigureButtonProps {
-  plusOrMinus: 'plus' | 'minus',
-  configureFunction: Function,
-  initialValue: number
+  plusOrMinus: "plus" | "minus";
+  configureFunction: Function;
+  initialValue: number;
 }
 
 const ConfigureButton = ({
   plusOrMinus,
   configureFunction,
-  initialValue
+  initialValue,
 }: ConfigureButtonProps) => {
   let sum: number;
   let text: string;
 
-  if (plusOrMinus === 'plus') {
+  if (plusOrMinus === "plus") {
     sum = initialValue + 1;
-    text = '+';
+    text = "+";
   } else {
     sum = initialValue === 0 ? 0 : initialValue - 1;
-    text = '-'
+    text = "-";
   }
 
-  return (
-    <Button
-      onClick={
-        () => configureFunction(sum)
-      }
-    >
-      {text}
-    </Button>
-  )
-}
+  return <Button onClick={() => configureFunction(sum)}>{text}</Button>;
+};
 
 export default ConfigureButton;

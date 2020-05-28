@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const WorkoutDetailsPageViewWrapper = styled.div`
   display: flex;
@@ -25,8 +25,7 @@ export const ExerciseTitleWrapper = styled.div`
   align-items: center;
 `;
 
-export const ExerciseTitle = styled(H3)`
-`;
+export const ExerciseTitle = styled(H3)``;
 
 export const ExerciseImageContainer = styled.div`
   flex: 1;
@@ -73,6 +72,4 @@ export const PreWorkoutDetailsWrapper = styled.div`
   margin-bottom: 60px;
 `;
 
-export const ButtonWrapper = styled.button`
-  
-`;
+export const ButtonWrapper = styled.button``;

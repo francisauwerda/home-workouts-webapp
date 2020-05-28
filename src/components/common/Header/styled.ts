@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -11,7 +11,6 @@ export const LeftPart = styled.div`
 
   display: flex;
   align-items: center;
-
 `;
 
 export const MiddlePart = styled.div`

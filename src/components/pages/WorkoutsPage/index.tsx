@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-import WorkoutsPageView from './WorkoutsPageView';
-import { GET_WORKOUTS } from '../../../graphql/queries';
+import WorkoutsPageView from "./WorkoutsPageView";
+import { GET_WORKOUTS } from "../../../graphql/queries";
 
 // TODO: Set to 1 for production
 const WORKOUT_MULTIPLIER = 10;
@@ -17,13 +17,16 @@ const WorkoutsPage = () => {
     for (let i = 0; i < WORKOUT_MULTIPLIER; i++) {
       workouts.push({
         ...workout,
-        // @ts-ignore
-        id: WORKOUT_MULTIPLIER === 1 ? `${workout.id}` : `${workout.id}${i === 0 ? '' : i}`
+        id:
+          // @ts-ignore
+          WORKOUT_MULTIPLIER === 1
+            ? `${workout.id}`
+            : `${workout.id}${i === 0 ? "" : i}`,
       });
     }
   }
 
-  return (<WorkoutsPageView workouts={workouts} />)
-}
+  return <WorkoutsPageView workouts={workouts} />;
+};
 
 export default WorkoutsPage;

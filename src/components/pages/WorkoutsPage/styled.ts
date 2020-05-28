@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Header = styled.h2`
   font-size: 60px;
@@ -31,7 +31,7 @@ export const WorkoutsSectionContainer = styled.div`
 export const WorkoutsGroupWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 50px; 
+  margin: 50px;
 `;
 
 export const WorkoutsGroupTitle = styled.h5`
@@ -57,7 +57,11 @@ export const WorkoutCardWrapper = styled(Link)`
   margin-bottom: 8px;
 
   text-decoration: none;
-  &:focus, &:hover, &:visited, &:link, &:active {
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
     text-decoration: none;
   }
   color: black;

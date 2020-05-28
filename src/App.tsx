@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "@apollo/react-hooks";
 
-import WorkoutsPage from './components/pages/WorkoutsPage';
-import WorkoutDetailsPage from './components/pages/WorkoutDetailsPage';
-import { Routes } from './components/enums';
+import WorkoutsPage from "./components/pages/WorkoutsPage";
+import WorkoutDetailsPage from "./components/pages/WorkoutDetailsPage";
+import { Routes } from "./components/enums";
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql'
-})
+  uri: "http://localhost:4000/graphql",
+});
 
 function App() {
   return (

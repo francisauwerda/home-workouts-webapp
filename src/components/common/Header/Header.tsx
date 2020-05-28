@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
-import * as SC from './styled';
+import * as SC from "./styled";
 
 interface HeaderProps {
-  title: string,
-  leftPart?: ReactNode,
-  rightPart?: ReactNode
+  title: string;
+  leftPart?: ReactNode;
+  rightPart?: ReactNode;
 }
 
 const Header = ({ title, leftPart, rightPart }: HeaderProps) => {
@@ -15,7 +15,7 @@ const Header = ({ title, leftPart, rightPart }: HeaderProps) => {
       <SC.MiddlePart>{title}</SC.MiddlePart>
       {<SC.LeftPart>{rightPart && rightPart}</SC.LeftPart>}
     </SC.HeaderWrapper>
-  )
+  );
 };
 
 export default Header;

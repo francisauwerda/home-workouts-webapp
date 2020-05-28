@@ -1,10 +1,10 @@
 export enum Environment {
   Development = "DEVOLPMENT",
-  Production = "PRODUCTION"
+  Production = "PRODUCTION",
 }
 
 const config = {
-  environment: Environment.Development
-}
+  environment: Environment.Development,
+};
 
 export default config;
