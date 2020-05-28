@@ -15,12 +15,13 @@ const ConfigureButton = ({
 }: ConfigureButtonProps) => {
   let sum: number;
   let text: string;
+  let step = 5;
 
   if (plusOrMinus === "plus") {
-    sum = initialValue + 1;
+    sum = initialValue + step;
     text = "+";
   } else {
-    sum = initialValue === 0 ? 0 : initialValue - 1;
+    sum = initialValue === 0 ? 0 : initialValue - step;
     text = "-";
   }
 

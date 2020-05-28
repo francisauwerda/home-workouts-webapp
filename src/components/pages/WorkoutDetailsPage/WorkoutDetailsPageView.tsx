@@ -11,7 +11,7 @@ import ExerciseComponent from "./ExerciseComponent";
 const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
   const { title, exercises } = workout;
 
-  const initialTimesForBoth = 3;
+  const initialTimesForBoth = 10;
   const [currentExercise, setCurrentExercise] = useState(0);
   const isNextExercise = currentExercise < exercises.length - 1;
   const [isRunning, setIsRunning] = useState(false);
