@@ -1,32 +1,7 @@
 import React from "react";
-import { Routes } from "../../enums";
 import * as SC from "./styled";
-
-export interface Exercise {
-  id: string;
-  title: string;
-  imageUrl: string;
-  order: number;
-}
-
-export interface Workout {
-  id: string;
-  title: string;
-  exercises: Exercise[];
-}
-
-const WorkoutCard = ({ workout }: { workout: Workout }) => {
-  return (
-    <SC.WorkoutCardWrapper to={`${Routes.WorkoutDetailsPage}/${workout.id}`}>
-      <SC.WorkoutCardInner>
-        <SC.WorkoutTitle>{workout.title}</SC.WorkoutTitle>
-        <SC.WorkoutSubtitle>
-          {`${workout.exercises.length} exercises`}
-        </SC.WorkoutSubtitle>
-      </SC.WorkoutCardInner>
-    </SC.WorkoutCardWrapper>
-  );
-};
+import { Workout } from "../../types";
+import WorkoutCard from "./WorkoutCard";
 
 interface WorkoutsPageViewProps {
   workouts: Workout[];

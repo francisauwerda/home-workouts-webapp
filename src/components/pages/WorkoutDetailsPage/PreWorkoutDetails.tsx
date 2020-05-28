@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Exercise } from "../WorkoutsPage/WorkoutsPageView";
 import * as SC from "./styled";
 import ConfigureButton from "./ConfigureButton";
+import { Exercise } from "../../types";
 
 interface PreWorkoutDetailsProps {
   exercises: Exercise[];

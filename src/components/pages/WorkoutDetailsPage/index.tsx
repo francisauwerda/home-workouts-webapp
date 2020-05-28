@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
 import { useRouteMatch, Link } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
-import { Workout } from "../WorkoutsPage/WorkoutsPageView";
 import WorkoutDetailsPageView from "./WorkoutDetailsPageView";
 import { GET_WORKOUTS } from "../../../graphql/queries";
+import { Workout } from "../../types";
 
 interface Params {
   workoutId: string;

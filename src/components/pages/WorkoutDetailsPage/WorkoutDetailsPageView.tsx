@@ -1,75 +1,14 @@
 import React, { useState } from "react";
 
-import { Workout, Exercise } from "../WorkoutsPage/WorkoutsPageView";
 import * as SC from "./styled";
-import config, { Environment } from "../../../config";
 import { useInterval } from "../../hooks";
 import { Link } from "react-router-dom";
 import PreWorkoutDetails from "./PreWorkoutDetails";
 import { Header } from "../../common";
+import { Workout } from "../../types";
+import ExerciseComponent from "./ExerciseComponent";
 
-interface Props {
-  workout: Workout;
-}
-
-const DEV_MODE = config.environment === Environment.Development;
-const DEV_IMAGE_URL = "/dips.jpg";
-
-const Timer = ({
-  countdownRemaining,
-  timeRemaining,
-}: {
-  countdownRemaining: number;
-  timeRemaining: number;
-}) => {
-  let text: string;
-  let time: number;
-  if (countdownRemaining > 0) {
-    text = "Countdown";
-    time = countdownRemaining;
-  } else if (timeRemaining > 0) {
-    text = "Go go go!!!";
-    time = timeRemaining;
-  } else {
-    text = "Finished 🏅";
-    time = 0;
-  }
-  return (
-    <SC.TimerWrapper>
-      <p>{text}</p>
-      <SC.H3>{time} seconds</SC.H3>
-    </SC.TimerWrapper>
-  );
-};
-
-const ExerciseComponent = ({
-  exercise,
-  countdownRemaining,
-  timeRemaining,
-}: {
-  exercise: Exercise;
-  countdownRemaining: number;
-  timeRemaining: number;
-}) => {
-  const imageUrl = DEV_MODE ? DEV_IMAGE_URL : exercise.imageUrl;
-
-  return (
-    <SC.ExerciseWrapper>
-      <SC.ExerciseTitleWrapper>
-        <SC.ExerciseTitle>{exercise.title}</SC.ExerciseTitle>
-      </SC.ExerciseTitleWrapper>
-      <SC.ExerciseImageContainer>
-        <SC.ExerciseImage src={imageUrl} alt={exercise.title} />
-      </SC.ExerciseImageContainer>
-      <Timer
-        timeRemaining={timeRemaining}
-        countdownRemaining={countdownRemaining}
-      />
-    </SC.ExerciseWrapper>
-  );
-};
-
-const WorkoutDetailsPageView = ({ workout }: Props) => {
+const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
   const { title, exercises } = workout;
 
   const initialTimesForBoth = 3;
