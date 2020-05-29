@@ -2,6 +2,7 @@ import React from "react";
 import * as SC from "./styled";
 import { Workout } from "../../types";
 import WorkoutCard from "./WorkoutCard";
+import { Header } from "../../common";
 
 interface WorkoutsPageViewProps {
   workouts: Workout[];
@@ -10,9 +11,7 @@ interface WorkoutsPageViewProps {
 const WorkoutsPageView = ({ workouts }: WorkoutsPageViewProps) => {
   return (
     <SC.PageContainer>
-      <SC.TitleContainer>
-        <SC.Header>Choose your workout</SC.Header>
-      </SC.TitleContainer>
+      <Header title="Choose your workout" />
       <SC.WorkoutsSectionContainer>
         <SC.WorkoutsGroupWrapper>
           <SC.WorkoutsGroupTitle>Full body</SC.WorkoutsGroupTitle>

@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const Header = styled.h2`
-  font-size: 60px;
-`;
-
 export const PageContainer = styled.div`
   height: 100%;
 
@@ -23,6 +19,7 @@ export const TitleContainer = styled.div`
 export const WorkoutsSectionContainer = styled.div`
   display: flex;
   flex: 1;
+  margin-top: 70px;
 
   /* Remove this */
   background-color: lightgrey;

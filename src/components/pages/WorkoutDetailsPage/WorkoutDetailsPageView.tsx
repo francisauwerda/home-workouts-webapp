@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import * as SC from "./styled";
 import { useInterval } from "../../hooks";
-import { Link } from "react-router-dom";
 import PreWorkoutDetails from "./PreWorkoutDetails";
 import { Header } from "../../common";
 import { Workout } from "../../types";
@@ -80,34 +79,43 @@ const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
 
   return (
     <SC.WorkoutDetailsPageViewWrapper>
-      <Header title={title} leftPart={<Link to="/">Back</Link>} />
+      <Header
+        title={title}
+        leftPart={
+          <SC.BackButtonWrapper to="/">
+            <SC.BackButtonImage src="/back_button.png" alt="back-button" />
+          </SC.BackButtonWrapper>
+        }
+      />
 
-      {workoutStarted ? (
-        <ExerciseComponent
-          exercise={exercises[currentExercise]}
-          countdownRemaining={countdownRemaining}
-          timeRemaining={exerciseTimeRemaining}
-        />
-      ) : (
-        <PreWorkoutDetails
-          initialCountdownRemaining={initialCountdownRemaining}
-          configureCountdown={configureCountdown}
-          initialExerciseTimeRemaining={initialExerciseTimeRemaining}
-          configureExerciseTime={configureExerciseTime}
-          exercises={exercises}
-        />
-      )}
+      <SC.PageContainer>
+        {workoutStarted ? (
+          <ExerciseComponent
+            exercise={exercises[currentExercise]}
+            countdownRemaining={countdownRemaining}
+            timeRemaining={exerciseTimeRemaining}
+          />
+        ) : (
+          <PreWorkoutDetails
+            initialCountdownRemaining={initialCountdownRemaining}
+            configureCountdown={configureCountdown}
+            initialExerciseTimeRemaining={initialExerciseTimeRemaining}
+            configureExerciseTime={configureExerciseTime}
+            exercises={exercises}
+          />
+        )}
 
-      <div>Is running: {`${isRunning}`}</div>
-      <div>Countdown remaining: {countdownRemaining}</div>
-      <div>Exercise time remaining: {exerciseTimeRemaining}</div>
-      <div>Workout started: {`${workoutStarted}`}</div>
-      <SC.ButtonsWrapper>
-        <button onClick={toggleStartWorkout}>
-          {isRunning ? "Pause" : "Start"}
-        </button>
-        <button onClick={stopWorkout}>Stop</button>
-      </SC.ButtonsWrapper>
+        <div>Is running: {`${isRunning}`}</div>
+        <div>Countdown remaining: {countdownRemaining}</div>
+        <div>Exercise time remaining: {exerciseTimeRemaining}</div>
+        <div>Workout started: {`${workoutStarted}`}</div>
+        <SC.ButtonsWrapper>
+          <button onClick={toggleStartWorkout}>
+            {isRunning ? "Pause" : "Start"}
+          </button>
+          <button onClick={stopWorkout}>Stop</button>
+        </SC.ButtonsWrapper>
+      </SC.PageContainer>
     </SC.WorkoutDetailsPageViewWrapper>
   );
 };

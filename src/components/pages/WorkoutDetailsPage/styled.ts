@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const WorkoutDetailsPageViewWrapper = styled.div`
   display: flex;
@@ -73,3 +74,27 @@ export const PreWorkoutDetailsWrapper = styled.div`
 `;
 
 export const ButtonWrapper = styled.button``;
+
+export const BackButtonWrapper = styled(Link)`
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  :hover {
+    opacity: 0.5;
+  }
+`;
+
+export const BackButtonImage = styled.img`
+  width: 48px;
+  height: 48px;
+`;
+
+export const PageContainer = styled.div`
+  margin-top: 102px;
+`;

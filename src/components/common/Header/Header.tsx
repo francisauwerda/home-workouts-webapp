@@ -11,9 +11,11 @@ interface HeaderProps {
 const Header = ({ title, leftPart, rightPart }: HeaderProps) => {
   return (
     <SC.HeaderWrapper>
-      {<SC.LeftPart>{leftPart && leftPart}</SC.LeftPart>}
-      <SC.MiddlePart>{title}</SC.MiddlePart>
-      {<SC.LeftPart>{rightPart && rightPart}</SC.LeftPart>}
+      <SC.HeaderContainer>
+        {<SC.LeftPart>{leftPart && leftPart}</SC.LeftPart>}
+        <SC.MiddlePart>{title}</SC.MiddlePart>
+        {<SC.LeftPart>{rightPart && rightPart}</SC.LeftPart>}
+      </SC.HeaderContainer>
     </SC.HeaderWrapper>
   );
 };

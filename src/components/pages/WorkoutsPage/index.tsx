@@ -4,7 +4,7 @@ import WorkoutsPageView from "./WorkoutsPageView";
 import { GET_WORKOUTS } from "../../../graphql/queries";
 
 // TODO: Set to 1 for production
-const WORKOUT_MULTIPLIER = 10;
+const WORKOUT_MULTIPLIER = 1;
 
 const WorkoutsPage = () => {
   const { loading, error, data } = useQuery(GET_WORKOUTS);
