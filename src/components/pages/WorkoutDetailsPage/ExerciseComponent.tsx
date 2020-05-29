@@ -3,7 +3,7 @@ import React from "react";
 import * as SC from "./styled";
 import config, { Environment } from "../../../config";
 import { Exercise } from "../../types";
-import Timer from "./Timer";
+import { Timer } from "../../common";
 
 const DEV_MODE = config.environment === Environment.Development;
 const DEV_IMAGE_URL = "/dips.jpg";

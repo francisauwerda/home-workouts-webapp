@@ -1,16 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { H3 } from "../../common/styled";
 
 export const WorkoutDetailsPageViewWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
   max-height: 100%;
-`;
-
-export const H3 = styled.h3`
-  font-size: 48px;
-  font-weight: 400;
 `;
 
 export const ExerciseWrapper = styled.div`
@@ -39,14 +35,7 @@ export const ExerciseImageContainer = styled.div`
 export const ExerciseImage = styled.img`
   max-width: 100%;
   max-height: 600px;
-`;
-
-export const TimerWrapper = styled.div`
-  flex: 1;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 4px;
 `;
 
 export const ButtonsWrapper = styled.div`

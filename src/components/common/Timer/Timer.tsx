@@ -12,10 +12,10 @@ const Timer = ({
   let text: string;
   let time: number;
   if (countdownRemaining > 0) {
-    text = "Countdown";
+    text = "Rest ✌️";
     time = countdownRemaining;
   } else if (timeRemaining > 0) {
-    text = "Go go go!!!";
+    text = "Work! 💪";
     time = timeRemaining;
   } else {
     text = "Finished 🏅";
@@ -23,8 +23,8 @@ const Timer = ({
   }
   return (
     <SC.TimerWrapper>
-      <p>{text}</p>
-      <SC.H3>{time} seconds</SC.H3>
+      <SC.SecondsWrapper>{text}</SC.SecondsWrapper>
+      <SC.SecondsWrapper>{time} s</SC.SecondsWrapper>
     </SC.TimerWrapper>
   );
 };
