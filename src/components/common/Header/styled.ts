@@ -7,7 +7,6 @@ export const HeaderWrapper = styled.div`
   background-color: #e71d36;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   margin-bottom: 40px;
-  padding-bottom: 5px;
   position: fixed;
   width: 100%;
   top: 0;
@@ -17,11 +16,10 @@ export const HeaderWrapper = styled.div`
 export const HeaderContainer = styled.div`
   width: 100%;
   height: 100%;
-  max-width: 960px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 50px;
 `;
 
 export const LeftPart = styled.div`

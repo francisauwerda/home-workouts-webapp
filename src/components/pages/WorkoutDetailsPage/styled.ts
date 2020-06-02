@@ -2,13 +2,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { H3 } from "../../common/styled";
 
-export const WorkoutDetailsPageViewWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  max-height: 100%;
-`;
-
 export const ExerciseWrapper = styled.div`
   display: flex;
   margin-top: 60px;

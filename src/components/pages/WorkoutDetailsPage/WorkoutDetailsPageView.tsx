@@ -6,6 +6,7 @@ import PreWorkoutDetails from "./PreWorkoutDetails";
 import { Header } from "../../common";
 import { Workout } from "../../types";
 import ExerciseComponent from "./ExerciseComponent";
+import { ContentContainer, PageContainer } from "../../common/styled";
 
 const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
   const { title, exercises } = workout;
@@ -78,7 +79,7 @@ const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
   };
 
   return (
-    <SC.WorkoutDetailsPageViewWrapper>
+    <PageContainer>
       <Header
         title={title}
         leftPart={
@@ -88,7 +89,7 @@ const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
         }
       />
 
-      <SC.PageContainer>
+      <ContentContainer>
         {workoutStarted ? (
           <ExerciseComponent
             exercise={exercises[currentExercise]}
@@ -115,8 +116,8 @@ const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
           </button>
           <button onClick={stopWorkout}>Stop</button>
         </SC.ButtonsWrapper>
-      </SC.PageContainer>
-    </SC.WorkoutDetailsPageViewWrapper>
+      </ContentContainer>
+    </PageContainer>
   );
 };
 
