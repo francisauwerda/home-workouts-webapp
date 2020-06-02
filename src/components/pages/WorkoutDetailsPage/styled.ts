@@ -4,7 +4,7 @@ import { H3 } from "../../common/styled";
 
 export const ExerciseWrapper = styled.div`
   display: flex;
-  margin-top: 60px;
+  flex: 1;
 `;
 
 export const ExerciseTitleWrapper = styled.div`
@@ -32,7 +32,10 @@ export const ExerciseImage = styled.img`
 `;
 
 export const ButtonsWrapper = styled.div`
-  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ExercisesListWrapper = styled.div`
@@ -48,11 +51,16 @@ export const ExercisesList = styled.div`
   flex-direction: column;
 
   padding-top: 10px;
+  padding: 10px;
 `;
 
 export const PreWorkoutDetailsWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 10px;
+
   margin-bottom: 60px;
+  flex: 1;
 `;
 
 export const ButtonWrapper = styled.button``;
@@ -75,8 +83,4 @@ export const BackButtonWrapper = styled(Link)`
 export const BackButtonImage = styled.img`
   width: 48px;
   height: 48px;
-`;
-
-export const PageContainer = styled.div`
-  margin-top: 102px;
 `;

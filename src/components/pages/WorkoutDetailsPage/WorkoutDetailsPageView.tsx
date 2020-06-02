@@ -106,10 +106,6 @@ const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
           />
         )}
 
-        <div>Is running: {`${isRunning}`}</div>
-        <div>Countdown remaining: {countdownRemaining}</div>
-        <div>Exercise time remaining: {exerciseTimeRemaining}</div>
-        <div>Workout started: {`${workoutStarted}`}</div>
         <SC.ButtonsWrapper>
           <button onClick={toggleStartWorkout}>
             {isRunning ? "Pause" : "Start"}

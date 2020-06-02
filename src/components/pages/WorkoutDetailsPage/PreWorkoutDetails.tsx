@@ -22,7 +22,7 @@ const PreWorkoutDetails = ({
   return (
     <SC.PreWorkoutDetailsWrapper>
       <SC.ExercisesListWrapper>
-        <div>Exercises</div>
+        <h2>Exercises</h2>
         <SC.ExercisesList>
           {exercises.map((exercise) => (
             <span key={exercise.id}>{exercise.title}</span>
@@ -30,28 +30,31 @@ const PreWorkoutDetails = ({
         </SC.ExercisesList>
       </SC.ExercisesListWrapper>
       <SC.PreSetupWrapper>
-        <ConfigureButton
-          plusOrMinus="plus"
-          configureFunction={configureExerciseTime}
-          initialValue={initialExerciseTimeRemaining}
-        />
-        <ConfigureButton
-          plusOrMinus="minus"
-          configureFunction={configureExerciseTime}
-          initialValue={initialExerciseTimeRemaining}
-        />
-        <div>{`${initialExerciseTimeRemaining} seconds per exercise`}</div>
-        <ConfigureButton
-          plusOrMinus="plus"
-          configureFunction={configureCountdown}
-          initialValue={initialCountdownRemaining}
-        />
-        <ConfigureButton
-          plusOrMinus="minus"
-          configureFunction={configureCountdown}
-          initialValue={initialCountdownRemaining}
-        />
-        <div>{`${initialCountdownRemaining} seconds per rest`}</div>
+        <h2>Configuration</h2>
+        <SC.ExercisesList>
+          <ConfigureButton
+            plusOrMinus="plus"
+            configureFunction={configureExerciseTime}
+            initialValue={initialExerciseTimeRemaining}
+          />
+          <ConfigureButton
+            plusOrMinus="minus"
+            configureFunction={configureExerciseTime}
+            initialValue={initialExerciseTimeRemaining}
+          />
+          <div>{`${initialExerciseTimeRemaining} seconds per exercise`}</div>
+          <ConfigureButton
+            plusOrMinus="plus"
+            configureFunction={configureCountdown}
+            initialValue={initialCountdownRemaining}
+          />
+          <ConfigureButton
+            plusOrMinus="minus"
+            configureFunction={configureCountdown}
+            initialValue={initialCountdownRemaining}
+          />
+          <div>{`${initialCountdownRemaining} seconds per rest`}</div>
+        </SC.ExercisesList>
       </SC.PreSetupWrapper>
     </SC.PreWorkoutDetailsWrapper>
   );
