@@ -4,7 +4,7 @@ export enum Environment {
 }
 
 const config = {
-  environment: Environment.Development,
+  environment: Environment.Production,
 };
 
 export default config;
