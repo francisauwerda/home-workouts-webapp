@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import * as SC from "./styled";
 import { useInterval } from "../../hooks";
@@ -7,6 +7,29 @@ import { Header } from "../../common";
 import { Workout } from "../../types";
 import ExerciseComponent from "./ExerciseComponent";
 import { ContentContainer, PageContainer } from "../../common/styled";
+import { Button } from "../../common/Button";
+
+const useAudio = (url: string) => {
+  const [audio] = useState(new Audio(url));
+  const [playing, setPlaying] = useState(false);
+
+  const toggle = () => setPlaying(!playing);
+
+  useEffect(() => {
+    playing ? audio.play() : audio.pause();
+  }, [audio, playing]);
+
+  useEffect(() => {
+    audio.addEventListener("ended", () => {
+      setPlaying(false);
+    });
+    return () => {
+      audio.removeEventListener("ended", () => setPlaying(false));
+    };
+  }, [audio]);
+
+  return [playing, toggle];
+};
 
 const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
   const { title, exercises } = workout;
@@ -28,6 +51,7 @@ const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
   const [exerciseTimeRemaining, setExerciseTimeRemaining] = useState(
     initialExerciseTimeRemaining
   );
+  const [playing, toggleBeep] = useAudio("/beep.mp3");
 
   const configureCountdown = (countdown: number) => {
     setInitialCountdownRemaining(countdown);
@@ -48,8 +72,12 @@ const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
     () => {
       if (countdownRemaining > 0) {
         setCountdownRemaining(countdownRemaining - 1);
+        if (countdownRemaining === 1) {
+          (toggleBeep as () => void)();
+        }
       } else if (exerciseTimeRemaining > 0) {
         if (exerciseTimeRemaining === 1 && isNextExercise) {
+          (toggleBeep as () => void)();
           setCurrentExercise(currentExercise + 1);
           setCountdownRemaining(initialCountdownRemaining);
           setExerciseTimeRemaining(initialExerciseTimeRemaining);
@@ -89,7 +117,7 @@ const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
         }
       />
 
-      <ContentContainer>
+      <ContentContainer playing={playing}>
         {workoutStarted ? (
           <ExerciseComponent
             exercise={exercises[currentExercise]}
@@ -107,10 +135,11 @@ const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
         )}
 
         <SC.ButtonsWrapper>
-          <button onClick={toggleStartWorkout}>
-            {isRunning ? "Pause" : "Start"}
-          </button>
-          <button onClick={stopWorkout}>Stop</button>
+          <Button
+            text={isRunning ? "Pause" : "Start"}
+            onClick={toggleStartWorkout}
+          />
+          <Button text="Stop" onClick={stopWorkout} />
         </SC.ButtonsWrapper>
       </ContentContainer>
     </PageContainer>
