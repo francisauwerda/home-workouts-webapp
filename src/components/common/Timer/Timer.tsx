@@ -5,13 +5,18 @@ import * as SC from "./styled";
 const Timer = ({
   countdownRemaining,
   timeRemaining,
+  isFirstExercise,
 }: {
   countdownRemaining: number;
   timeRemaining: number;
+  isFirstExercise: boolean;
 }) => {
   let text: string;
   let time: number;
-  if (countdownRemaining > 0) {
+  if (countdownRemaining > 0 && isFirstExercise) {
+    text = "Prepare to begin ⏳";
+    time = countdownRemaining;
+  } else if (countdownRemaining > 0) {
     text = "Rest ✌️";
     time = countdownRemaining;
   } else if (timeRemaining > 0) {

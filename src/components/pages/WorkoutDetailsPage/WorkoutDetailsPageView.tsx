@@ -123,6 +123,7 @@ const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
             exercise={exercises[currentExercise]}
             countdownRemaining={countdownRemaining}
             timeRemaining={exerciseTimeRemaining}
+            isFirstExercise={currentExercise === 0}
           />
         ) : (
           <PreWorkoutDetails

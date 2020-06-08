@@ -12,10 +12,12 @@ const ExerciseComponent = ({
   exercise,
   countdownRemaining,
   timeRemaining,
+  isFirstExercise,
 }: {
   exercise: Exercise;
   countdownRemaining: number;
   timeRemaining: number;
+  isFirstExercise: boolean;
 }) => {
   const imageUrl = DEV_MODE ? DEV_IMAGE_URL : exercise.imageUrl;
 
@@ -30,6 +32,7 @@ const ExerciseComponent = ({
       <Timer
         timeRemaining={timeRemaining}
         countdownRemaining={countdownRemaining}
+        isFirstExercise={isFirstExercise}
       />
     </SC.ExerciseWrapper>
   );
