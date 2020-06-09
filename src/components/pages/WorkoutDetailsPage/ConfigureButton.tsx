@@ -26,9 +26,9 @@ const ConfigureButton = ({
   }
 
   return (
-    <SC.ButtonWrapper type="button" onClick={() => configureFunction(sum)}>
+    <button type="button" onClick={() => configureFunction(sum)}>
       {text}
-    </SC.ButtonWrapper>
+    </button>
   );
 };
 

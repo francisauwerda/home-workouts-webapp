@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BREAKPOINT } from "../../constants";
 
 const ContentContainer: any = styled.div`
   display: flex;
@@ -9,6 +10,10 @@ const ContentContainer: any = styled.div`
 
   ${({ playing }: { playing: boolean }) =>
     playing && `background-color: white;`}
+
+  @media (max-width: ${BREAKPOINT}) {
+    padding-top: 80px;
+  }
 `;
 
 export default ContentContainer;

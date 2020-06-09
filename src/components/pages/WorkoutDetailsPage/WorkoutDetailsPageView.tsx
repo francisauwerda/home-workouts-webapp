@@ -118,22 +118,24 @@ const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
       />
 
       <ContentContainer playing={playing}>
-        {workoutStarted ? (
-          <ExerciseComponent
-            exercise={exercises[currentExercise]}
-            countdownRemaining={countdownRemaining}
-            timeRemaining={exerciseTimeRemaining}
-            isFirstExercise={currentExercise === 0}
-          />
-        ) : (
-          <PreWorkoutDetails
-            initialCountdownRemaining={initialCountdownRemaining}
-            configureCountdown={configureCountdown}
-            initialExerciseTimeRemaining={initialExerciseTimeRemaining}
-            configureExerciseTime={configureExerciseTime}
-            exercises={exercises}
-          />
-        )}
+        <SC.ContentWrapper>
+          {workoutStarted ? (
+            <ExerciseComponent
+              exercise={exercises[currentExercise]}
+              countdownRemaining={countdownRemaining}
+              timeRemaining={exerciseTimeRemaining}
+              isFirstExercise={currentExercise === 0}
+            />
+          ) : (
+            <PreWorkoutDetails
+              initialCountdownRemaining={initialCountdownRemaining}
+              configureCountdown={configureCountdown}
+              initialExerciseTimeRemaining={initialExerciseTimeRemaining}
+              configureExerciseTime={configureExerciseTime}
+              exercises={exercises}
+            />
+          )}
+        </SC.ContentWrapper>
 
         <SC.ButtonsWrapper>
           <Button

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { H3 } from "../../common/styled";
+import { BREAKPOINT } from "../../constants";
 
 export const ExerciseWrapper = styled.div`
   display: flex;
@@ -32,10 +33,16 @@ export const ExerciseImage = styled.img`
 `;
 
 export const ButtonsWrapper = styled.div`
-  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1;
+
+  background-color: red;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 `;
 
 export const ExercisesListWrapper = styled.div`
@@ -61,9 +68,16 @@ export const PreWorkoutDetailsWrapper = styled.div`
 
   margin-bottom: 60px;
   flex: 1;
+
+  @media (max-width: ${BREAKPOINT}) {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  }
 `;
 
-export const ButtonWrapper = styled.button``;
+export const ContentWrapper = styled.div`
+  flex: 1;
+`;
 
 export const BackButtonWrapper = styled(Link)`
   text-decoration: none;
