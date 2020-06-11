@@ -29,33 +29,43 @@ const PreWorkoutDetails = ({
           ))}
         </SC.ExercisesList>
       </SC.ExercisesListWrapper>
-      <SC.PreSetupWrapper>
+      <SC.ConfigWrapper>
         <h2>Configuration</h2>
-        <SC.ExercisesList>
-          <ConfigureButton
-            plusOrMinus="plus"
-            configureFunction={configureExerciseTime}
-            initialValue={initialExerciseTimeRemaining}
-          />
-          <ConfigureButton
-            plusOrMinus="minus"
-            configureFunction={configureExerciseTime}
-            initialValue={initialExerciseTimeRemaining}
-          />
-          <div>{`${initialExerciseTimeRemaining} seconds per exercise`}</div>
-          <ConfigureButton
-            plusOrMinus="plus"
-            configureFunction={configureCountdown}
-            initialValue={initialCountdownRemaining}
-          />
-          <ConfigureButton
-            plusOrMinus="minus"
-            configureFunction={configureCountdown}
-            initialValue={initialCountdownRemaining}
-          />
-          <div>{`${initialCountdownRemaining} seconds per rest`}</div>
-        </SC.ExercisesList>
-      </SC.PreSetupWrapper>
+        <SC.ConfigContent>
+          <div>
+            <div>Seconds per exercises</div>
+            <SC.ConfigButtonsWrapper>
+              <ConfigureButton
+                plusOrMinus="minus"
+                configureFunction={configureExerciseTime}
+                initialValue={initialExerciseTimeRemaining}
+              />
+              <SC.ConfigUnit>{initialExerciseTimeRemaining}</SC.ConfigUnit>
+              <ConfigureButton
+                plusOrMinus="plus"
+                configureFunction={configureExerciseTime}
+                initialValue={initialExerciseTimeRemaining}
+              />
+            </SC.ConfigButtonsWrapper>
+          </div>
+          <div>
+            <div>Seconds per rest</div>
+            <SC.ConfigButtonsWrapper>
+              <ConfigureButton
+                plusOrMinus="minus"
+                configureFunction={configureCountdown}
+                initialValue={initialCountdownRemaining}
+              />
+              <SC.ConfigUnit>{initialCountdownRemaining}</SC.ConfigUnit>
+              <ConfigureButton
+                plusOrMinus="plus"
+                configureFunction={configureCountdown}
+                initialValue={initialCountdownRemaining}
+              />
+            </SC.ConfigButtonsWrapper>
+          </div>
+        </SC.ConfigContent>
+      </SC.ConfigWrapper>
     </SC.PreWorkoutDetailsWrapper>
   );
 };

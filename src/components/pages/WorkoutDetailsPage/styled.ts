@@ -38,26 +38,36 @@ export const ButtonsWrapper = styled.div`
   align-items: center;
   flex: 1;
 
-  background-color: red;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  background-color: #e71d36;
+`;
+
+export const ConfigButtonsWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const ExercisesListWrapper = styled.div`
-  flex: 1;
+  overflow-y: scroll;
 `;
 
-export const PreSetupWrapper = styled.div`
-  flex: 1;
+export const ConfigWrapper = styled.div`
+  @media (max-width: ${BREAKPOINT}) {
+    padding-top: 10px;
+  }
+`;
+
+export const ConfigContent = styled.div`
+  margin: 10px;
+`;
+
+export const ConfigUnit = styled.div`
+  padding: 0 20px;
 `;
 
 export const ExercisesList = styled.div`
   display: flex;
   flex-direction: column;
 
-  padding-top: 10px;
   padding: 10px;
 `;
 
@@ -66,12 +76,9 @@ export const PreWorkoutDetailsWrapper = styled.div`
   grid-template-columns: auto auto;
   column-gap: 10px;
 
-  margin-bottom: 60px;
-  flex: 1;
-
   @media (max-width: ${BREAKPOINT}) {
     grid-template-columns: auto;
-    grid-template-rows: auto auto;
+    grid-template-rows: 50% 50%;
   }
 `;
 
@@ -97,4 +104,20 @@ export const BackButtonWrapper = styled(Link)`
 export const BackButtonImage = styled.img`
   width: 48px;
   height: 48px;
+`;
+
+export const PageWrapper = styled.div`
+  display: grid;
+  grid-template-rows: 72px auto auto;
+  height: 100vh;
+  max-height: 100%;
+`;
+
+export const PageHeaderWrapper = styled.div``;
+export const PageContentWrapper = styled.div`
+  overflow-y: scroll;
+`;
+export const PageFooterWrapper = styled.div`
+  overflow-y: scroll;
+  display: flex;
 `;

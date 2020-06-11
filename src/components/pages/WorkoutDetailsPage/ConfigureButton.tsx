@@ -1,6 +1,5 @@
 import React from "react";
-
-import * as SC from "./styled";
+import { Button } from "../../common/Button";
 
 interface ConfigureButtonProps {
   plusOrMinus: "plus" | "minus";
@@ -25,11 +24,7 @@ const ConfigureButton = ({
     text = "-";
   }
 
-  return (
-    <button type="button" onClick={() => configureFunction(sum)}>
-      {text}
-    </button>
-  );
+  return <Button text={text} onClick={() => configureFunction(sum)} />;
 };
 
 export default ConfigureButton;

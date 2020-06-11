@@ -108,43 +108,49 @@ const WorkoutDetailsPageView = ({ workout }: { workout: Workout }) => {
 
   return (
     <PageContainer>
-      <Header
-        title={title}
-        leftPart={
-          <SC.BackButtonWrapper to="/">
-            <SC.BackButtonImage src="/back_button.png" alt="back-button" />
-          </SC.BackButtonWrapper>
-        }
-      />
-
-      <ContentContainer playing={playing}>
-        <SC.ContentWrapper>
-          {workoutStarted ? (
-            <ExerciseComponent
-              exercise={exercises[currentExercise]}
-              countdownRemaining={countdownRemaining}
-              timeRemaining={exerciseTimeRemaining}
-              isFirstExercise={currentExercise === 0}
-            />
-          ) : (
-            <PreWorkoutDetails
-              initialCountdownRemaining={initialCountdownRemaining}
-              configureCountdown={configureCountdown}
-              initialExerciseTimeRemaining={initialExerciseTimeRemaining}
-              configureExerciseTime={configureExerciseTime}
-              exercises={exercises}
-            />
-          )}
-        </SC.ContentWrapper>
-
-        <SC.ButtonsWrapper>
-          <Button
-            text={isRunning ? "Pause" : "Start"}
-            onClick={toggleStartWorkout}
+      <SC.PageWrapper>
+        <SC.PageHeaderWrapper>
+          <Header
+            title={title}
+            leftPart={
+              <SC.BackButtonWrapper to="/">
+                <SC.BackButtonImage src="/back_button.png" alt="back-button" />
+              </SC.BackButtonWrapper>
+            }
           />
-          <Button text="Stop" onClick={stopWorkout} />
-        </SC.ButtonsWrapper>
-      </ContentContainer>
+        </SC.PageHeaderWrapper>
+        <SC.PageContentWrapper>
+          <ContentContainer playing={playing}>
+            <SC.ContentWrapper>
+              {workoutStarted ? (
+                <ExerciseComponent
+                  exercise={exercises[currentExercise]}
+                  countdownRemaining={countdownRemaining}
+                  timeRemaining={exerciseTimeRemaining}
+                  isFirstExercise={currentExercise === 0}
+                />
+              ) : (
+                <PreWorkoutDetails
+                  initialCountdownRemaining={initialCountdownRemaining}
+                  configureCountdown={configureCountdown}
+                  initialExerciseTimeRemaining={initialExerciseTimeRemaining}
+                  configureExerciseTime={configureExerciseTime}
+                  exercises={exercises}
+                />
+              )}
+            </SC.ContentWrapper>
+          </ContentContainer>
+        </SC.PageContentWrapper>
+        <SC.PageFooterWrapper>
+          <SC.ButtonsWrapper>
+            <Button
+              text={isRunning ? "Pause" : "Start"}
+              onClick={toggleStartWorkout}
+            />
+            <Button text="Stop" onClick={stopWorkout} />
+          </SC.ButtonsWrapper>
+        </SC.PageFooterWrapper>
+      </SC.PageWrapper>
     </PageContainer>
   );
 };
