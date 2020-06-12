@@ -7,9 +7,11 @@ import WorkoutsPage from "./components/pages/WorkoutsPage";
 import WorkoutDetailsPage from "./components/pages/WorkoutDetailsPage";
 import { Routes } from "./components/enums";
 
+const uri = "http://localhost:4000/graphql";
+
 const client = new ApolloClient({
   // TODO: Put this into an env var
-  uri: "http://localhost:4000/graphql",
+  uri,
 });
 
 function App() {

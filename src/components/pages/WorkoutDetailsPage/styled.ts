@@ -6,6 +6,12 @@ import { BREAKPOINT } from "../../constants";
 export const ExerciseWrapper = styled.div`
   display: flex;
   flex: 1;
+
+  @media (max-width: ${BREAKPOINT}) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const ExerciseTitleWrapper = styled.div`
@@ -84,6 +90,7 @@ export const PreWorkoutDetailsWrapper = styled.div`
 
 export const ContentWrapper = styled.div`
   flex: 1;
+  display: flex;
 `;
 
 export const BackButtonWrapper = styled(Link)`
@@ -108,7 +115,7 @@ export const BackButtonImage = styled.img`
 
 export const PageWrapper = styled.div`
   display: grid;
-  grid-template-rows: 72px auto auto;
+  grid-template-rows: 72px auto 60px;
   height: 100vh;
   max-height: 100%;
 `;
@@ -116,6 +123,7 @@ export const PageWrapper = styled.div`
 export const PageHeaderWrapper = styled.div``;
 export const PageContentWrapper = styled.div`
   overflow-y: scroll;
+  display: flex;
 `;
 export const PageFooterWrapper = styled.div`
   overflow-y: scroll;
