@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 import WorkoutsPageView from "./WorkoutsPageView";
 import { GET_WORKOUTS } from "../../../graphql/queries";
 
-// TODO: Set to 1 for production
+// TODO: Set to 1 for production.
 const WORKOUT_MULTIPLIER = 1;
 
 const WorkoutsPage = () => {
