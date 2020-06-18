@@ -9,12 +9,6 @@ export const TitleContainer = styled.div`
   padding: 60px 0;
 `;
 
-export const WorkoutsGroupTitle = styled.h5`
-  font-size: 24px;
-  font-weight: 400;
-  padding-bottom: 10px;
-`;
-
 export const WorkoutsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -49,6 +43,14 @@ export const WorkoutCardInner = styled.div`
   padding: 8px;
 `;
 
-export const WorkoutTitle = styled.div``;
+export const WorkoutTitle = styled.div`
+  font-size: 20px;
+  font-weight: medium;
+  letter-spacing: 0.15px;
+`;
 
-export const WorkoutSubtitle = styled.div``;
+export const WorkoutSubtitle = styled.div`
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: 0.15px;
+`;

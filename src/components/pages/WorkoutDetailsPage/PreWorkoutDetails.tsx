@@ -3,6 +3,7 @@ import React from "react";
 import * as SC from "./styled";
 import ConfigureButton from "./ConfigureButton";
 import { Exercise } from "../../types";
+import H5 from "../../common/styled/H5";
 
 interface PreWorkoutDetailsProps {
   exercises: Exercise[];
@@ -22,15 +23,17 @@ const PreWorkoutDetails = ({
   return (
     <SC.PreWorkoutDetailsWrapper>
       <SC.ExercisesListWrapper>
-        <h2>Exercises</h2>
+        <H5>Exercises</H5>
         <SC.ExercisesList>
           {exercises.map((exercise) => (
-            <span key={exercise.id}>{exercise.title}</span>
+            <SC.ExerciseItem key={exercise.id}>
+              {exercise.title}
+            </SC.ExerciseItem>
           ))}
         </SC.ExercisesList>
       </SC.ExercisesListWrapper>
       <SC.ConfigWrapper>
-        <h2>Configuration</h2>
+        <H5>Configuration</H5>
         <SC.ConfigContent>
           <div>
             <div>Seconds per exercises</div>

@@ -10,6 +10,7 @@ import { Workout } from "../../types";
 import WorkoutCard from "./WorkoutCard";
 import { Header } from "../../common";
 import { ContentContainer, PageContainer } from "../../common/styled";
+import H5 from "../../common/styled/H5";
 
 interface WorkoutsPageViewProps {
   workouts: Workout[];
@@ -24,7 +25,7 @@ const WorkoutsPageView = ({ workouts }: WorkoutsPageViewProps) => {
         </PageHeaderWrapper>
         <PageContentWrapper>
           <ContentContainer>
-            <SC.WorkoutsGroupTitle>Full body</SC.WorkoutsGroupTitle>
+            <H5>Full body</H5>
             <SC.WorkoutsContainer>
               {workouts.map((workout) => {
                 return <WorkoutCard key={workout.id} workout={workout} />;

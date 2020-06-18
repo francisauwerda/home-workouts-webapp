@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BREAKPOINT } from "../../constants";
 
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -20,6 +21,10 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 50px;
+
+  @media (max-width: ${BREAKPOINT}) {
+    padding: 0 20px;
+  }
 `;
 
 export const LeftPart = styled.div`
@@ -38,6 +43,11 @@ export const MiddlePart = styled.div`
 
   color: white;
   font-size: 24px;
+
+  @media (max-width: ${BREAKPOINT}) {
+    flex: 4;
+    font-size: 18px;
+  }
 `;
 
 export const RightPart = styled.div`

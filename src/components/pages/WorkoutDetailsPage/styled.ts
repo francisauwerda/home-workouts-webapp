@@ -77,7 +77,14 @@ export const ExercisesList = styled.div`
   padding: 10px;
 `;
 
+export const ExerciseItem = styled.span`
+  font-size: 14px;
+  font-weight: regular;
+  letter-spacing: 0.25;
+`;
+
 export const PreWorkoutDetailsWrapper = styled.div`
+  flex: 1;
   display: grid;
   grid-template-columns: auto auto;
   column-gap: 10px;
