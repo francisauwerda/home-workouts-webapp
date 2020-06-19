@@ -25,7 +25,7 @@ const WorkoutsPageView = ({ workouts }: WorkoutsPageViewProps) => {
         </PageHeaderWrapper>
         <PageContentWrapper>
           <ContentContainer>
-            <H5>Full body</H5>
+            <H5>Workouts</H5>
             <SC.WorkoutsContainer>
               {workouts.map((workout) => {
                 return <WorkoutCard key={workout.id} workout={workout} />;
