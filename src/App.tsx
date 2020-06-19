@@ -14,6 +14,8 @@ const client = new ApolloClient({
   uri,
 });
 
+document.title = "Workouts";
+
 function App() {
   return (
     <ApolloProvider client={client}>
