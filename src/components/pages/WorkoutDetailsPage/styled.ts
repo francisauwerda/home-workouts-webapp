@@ -25,15 +25,14 @@ export const ExerciseTitleWrapper = styled.div`
 export const ExerciseTitle = styled(H3)``;
 
 export const ExerciseImageContainer = styled.div`
-  flex: 1;
-  width: 150px;
+  flex: 3;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 export const ExerciseImage = styled.img`
-  max-width: 100%;
+  max-width: 80%;
   max-height: 600px;
   border-radius: 4px;
 `;

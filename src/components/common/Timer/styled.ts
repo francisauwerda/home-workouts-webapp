@@ -10,4 +10,9 @@ export const TimerWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const SecondsWrapper = styled(H3)``;
+export const SecondsWrapper = styled(H3)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
